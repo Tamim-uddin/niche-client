@@ -1,0 +1,12 @@
+.add-products input{
+    margin-bottom: 2px;
+    border-radius: 10px;
+    border: 1px solid #909195;
+    width: 50%;
+}
+.add-products textarea{
+    margin-bottom: 2px;
+    border-radius: 10px;
+    border: 1px solid #909195;
+    width: 50%;
+}
