@@ -30,7 +30,7 @@ const drawerWidth = 240;
 function Dashboard(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const {logout} = useAuth();
+  const {logout, admin} = useAuth();
 
   let { path, url } = useRouteMatch();
 
@@ -46,10 +46,12 @@ function Dashboard(props) {
           <Link style={{textDecoration: 'none'}} to={`${url}/payment`}>Payment Method</Link> <br />              
           <Link style={{textDecoration: 'none'}} to={`${url}/myorders`}>My Orders</Link> <br />       
           <Link style={{textDecoration: 'none'}} to={`${url}/addreview`}>Add Review</Link> <br />
+         {admin && <Box>
           <Link style={{textDecoration: 'none'}} to={`${url}/addproducts`}>Add Products</Link> <br />
           <Link style={{textDecoration: 'none'}} to={`${url}/makeadmin`}>Make Admin</Link> <br />
           <Link style={{textDecoration: 'none'}} to={`${url}/manageallorders`}>Manage AllOrders</Link> <br />
-          <Button onClick={logout} variant="contained">Logout</Button>
+           </Box>}
+          <Link to="/"><Button onClick={logout} variant="contained">Logout</Button></Link>
     
       
     </div>

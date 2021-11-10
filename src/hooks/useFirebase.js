@@ -8,6 +8,7 @@ const useFirebase = () => {
     const [user, setuser] = useState({});
     const [isloading, setisloading] = useState(false);
     const [autherror, setautherror] = useState('');
+    const [admin, setadmin] = useState(false);
 
     const auth = getAuth();
 
@@ -52,6 +53,12 @@ const useFirebase = () => {
           return () => unsubscribed;
     } , []);
 
+    useEffect(() => {
+        fetch(`http://localhost:5000/users/${user.email}`)
+        .then(res => res.json())
+        .then(data => setadmin(data.admin))
+    } , [user.email])
+
     const loginUser = (email, password, location, history) => {
         setisloading(true);
         signInWithEmailAndPassword(auth, email, password)
@@ -95,6 +102,7 @@ const useFirebase = () => {
 
     return {
         user,
+        admin,
         logout,
         loginUser,
         isloading,

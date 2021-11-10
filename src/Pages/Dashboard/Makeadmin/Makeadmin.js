@@ -25,6 +25,7 @@ const Makeadmin = () => {
         .then(data => {
             if(data.modifiedCount){
                 setsuccess(true);
+              
             }
             console.log(data);
             
