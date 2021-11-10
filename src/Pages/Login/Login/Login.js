@@ -1,10 +1,19 @@
-import { Container, TextField, Typography } from '@mui/material';
+import { Alert, CircularProgress, Container, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import Button from '@mui/material/Button';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useHistory } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 
 const Login = () => {
     const [loginData, setloginData] = useState({});
+    const {loginUser, isloading, autherror, user} = useAuth();
+
+    const location = useLocation();
+    const history = useHistory();
+
+    if(isloading){
+        return <CircularProgress />
+    }
 
     const handleonBlur = e => {
         const field = e.target.name;
@@ -17,6 +26,7 @@ const Login = () => {
 
     const handleonSubmit = e => {
         e.preventDefault();
+        loginUser(loginData.email, loginData.password, location, history)
     }
 
 
@@ -43,6 +53,8 @@ const Login = () => {
              <Button type="submit" variant="contained">Login</Button>
             </form>
             <Link to="/register"><Button variant="text">New user?Please Register</Button></Link>
+            {user.email && <Alert severity="success">login successfully</Alert>}
+            {autherror && <Alert severity="error">{autherror}</Alert>}
         </Container>
     );
 };

@@ -7,8 +7,10 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { NavLink } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 
 const Header = () => {
+  const {user, logout} = useAuth()
     return (
         <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -25,8 +27,12 @@ const Header = () => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Oculus Sunglasses
           </Typography>
-          <NavLink to="/dashboard"><Button sx={{textDecoration: 'none', color: 'white'}} color="inherit">Dashboard</Button></NavLink>
-          <NavLink to="/login"><Button sx={{textDecoration: 'none', color: 'white'}} color="inherit">Login</Button></NavLink>
+          { user?.email ?
+            <div>
+              <NavLink to="/dashboard"><Button sx={{textDecoration: 'none', color: 'white'}} color="inherit">Dashboard</Button></NavLink>
+              <Button onClick={logout} sx={{textDecoration: 'none', color: 'white'}} color="inherit">Logout</Button>
+            </div> :
+          <NavLink to="/login"><Button sx={{textDecoration: 'none', color: 'white'}} color="inherit">Login</Button></NavLink>}
         </Toolbar>
       </AppBar>
     </Box>
