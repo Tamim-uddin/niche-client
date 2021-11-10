@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged} from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, updateProfile } from "firebase/auth";
 import initializeAuthentication from "../Pages/Login/Firebase/firebase.init";
 
 initializeAuthentication();
@@ -12,12 +12,22 @@ const useFirebase = () => {
     const auth = getAuth();
 
 
-    const registerUser = (email, password, history) => {
+    const registerUser = (email, password, name, history) => {
         setisloading(true);
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                history.push('/');
-                const user = userCredential.user;
+                const newUser = {email, displayName: name};
+                setuser(newUser);
+                saveUser(email, name);
+                updateProfile(auth.currentUser, {
+                    displayName: name
+                  }).then(() => {
+                    
+                  }).catch((error) => {
+                   
+                  });
+
+                history.push('/');                
                 setautherror('');
             })
             .catch((error) => {
@@ -47,8 +57,8 @@ const useFirebase = () => {
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                const redirect_uri = location.state?.from || '/allproducts';
-               history.push(redirect_uri)
-                const user = userCredential.user;
+               history.push(redirect_uri);
+                
                 setautherror('');
                 
             })
@@ -57,6 +67,18 @@ const useFirebase = () => {
             })
             .finally(() => setisloading(false));
 
+    }
+
+    const saveUser = (email, displayName) => {
+        const user = {email, displayName};
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+        .then()
     }
 
     const logout = () => {

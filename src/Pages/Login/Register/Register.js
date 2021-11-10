@@ -26,7 +26,7 @@ const Register = () => {
 
     const handleonSubmit = e => {
         e.preventDefault();
-        registerUser(loginData.email, loginData.password, history)
+        registerUser(loginData.email, loginData.password, loginData.name, history);
     }
     return (
         <Container>

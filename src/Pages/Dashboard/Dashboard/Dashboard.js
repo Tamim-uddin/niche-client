@@ -23,12 +23,14 @@ import Addreview from '../Addreview/Addreview';
 import Addproducts from '../Addproducts/Addproducts';
 import Makeadmin from '../Makeadmin/Makeadmin';
 import Manageallorders from '../Manageallorders/Manageallorders';
+import useAuth from '../../../hooks/useAuth';
 
 const drawerWidth = 240;
 
 function Dashboard(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const {logout} = useAuth();
 
   let { path, url } = useRouteMatch();
 
@@ -47,7 +49,7 @@ function Dashboard(props) {
           <Link style={{textDecoration: 'none'}} to={`${url}/addproducts`}>Add Products</Link> <br />
           <Link style={{textDecoration: 'none'}} to={`${url}/makeadmin`}>Make Admin</Link> <br />
           <Link style={{textDecoration: 'none'}} to={`${url}/manageallorders`}>Manage AllOrders</Link> <br />
-          <Button variant="contained">Logout</Button>
+          <Button onClick={logout} variant="contained">Logout</Button>
     
       
     </div>
