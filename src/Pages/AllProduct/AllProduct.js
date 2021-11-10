@@ -15,9 +15,6 @@ const AllProduct = ({allproduct}) => {
                     <Card sx={{ minWidth: 275, p: 2 }}>
                         <CardContent>
                         <img style={{width: '98%', height: '200px'}} src= {img} alt="" />
-                        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                        Word of the Day
-                        </Typography>
                         <Typography variant="h5" component="div">
                          {name}
                         </Typography>
