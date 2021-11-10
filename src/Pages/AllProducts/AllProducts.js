@@ -1,29 +1,28 @@
 import { Grid, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import Product from '../Product/Product';
+import AllProduct from '../AllProduct/AllProduct';
 
-const Products = () => {
-    const [products, setproducts] = useState([]);
+const AllProducts = () => {
+    const [allproducts, setallproducts] = useState([]);
     useEffect( () => {
         fetch('./products.json')
         .then(res => res.json())
-        .then(data => setproducts(data))
+        .then(data => setallproducts(data))
     } , [])
     return (
         <div>
             <Typography sx={{backgroundColor: '#B2DFDB', py: 10, color: '#004D40'}} variant="h3" gutterBottom component="div">
-                Our Special Products
+                Our All Products
             </Typography>
 
             <Grid container spacing={2}>
                 {
-                    products.map(product => <Product key={product.id} product={product}></Product>)
+                   allproducts.map(allproduct => <AllProduct key={allproduct.id} allproduct={allproduct}></AllProduct>) 
                 }  
             </Grid>
 
-            
         </div>
     );
 };
 
-export default Products;
+export default AllProducts;

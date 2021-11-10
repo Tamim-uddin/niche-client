@@ -1,18 +1,38 @@
 
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import './App.css';
+import AllProducts from './Pages/AllProducts/AllProducts';
+import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 import Home from './Pages/Home/Home/Home';
+import Login from './Pages/Login/Login/Login';
+import Register from './Pages/Login/Register/Register';
+import PlaceOrder from './Pages/PlaceOrder/PlaceOrder';
 
 function App() {
   return (
     <div className="App">
         <Router>
           <Switch>
-            <Route path="/">
+            <Route exact path="/">
               <Home></Home>
             </Route>
-            <Route path="/home">
+            <Route exact path="/home">
               <Home></Home>
+            </Route>
+            <Route path="/login">
+              <Login></Login>
+            </Route>
+            <Route path="/register">
+              <Register></Register>
+            </Route>
+            <Route path="/dashboard">
+              <Dashboard></Dashboard>
+            </Route>
+            <Route path="/allproducts">
+              <AllProducts></AllProducts>
+            </Route>
+            <Route path="/product/:id">
+              <PlaceOrder></PlaceOrder>
             </Route>
           </Switch>
         </Router>

@@ -5,6 +5,7 @@ import banner1 from '../../../images/banner/banner1.jfif';
 import banner2 from '../../../images/banner/banner2.jfif';
 import banner3 from '../../../images/banner/banner3.jfif';
 import './Banner.css';
+import { Link } from 'react-router-dom';
 
 const Banner = () => {
     return (
@@ -18,7 +19,7 @@ const Banner = () => {
     <Carousel.Caption>
       <h3>Wellcome Oculus Sunglass</h3>
       <p>Sunglasses Online,Less Than Retail. Quality Custom Made Lenses.. Try On the Glasses Virtually | Free Shipping and Returns</p>
-      <Button sx={{color: "white", fontSize: 20}} variant="text">EXPLORE</Button>
+      <Link style={{textDecoration: 'none'}} to="/allproducts"><Button sx={{color: "white", fontSize: 20}} variant="text">EXPLORE</Button></Link>
     </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item>
@@ -31,7 +32,7 @@ const Banner = () => {
     <Carousel.Caption>
       <h3>Wellcome Oculus Sunglass</h3>
       <p>Sunglasses Online,Less Than Retail. Quality Custom Made Lenses.. Try On the Glasses Virtually | Free Shipping and Returns</p>
-      <Button sx={{color: "white", fontSize: 20}} variant="text">EXPLORE</Button>
+      <Link style={{textDecoration: 'none'}} to="/allproducts"><Button sx={{color: "white", fontSize: 20}} variant="text">EXPLORE</Button></Link>
     </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item>
@@ -44,7 +45,7 @@ const Banner = () => {
     <Carousel.Caption>
       <h3>Wellcome Oculus Sunglass</h3>
       <p>Sunglasses Online,Less Than Retail. Quality Custom Made Lenses.. Try On the Glasses Virtually | Free Shipping and Returns</p>
-      <Button sx={{color: "white", fontSize: 20}} variant="text">EXPLORE</Button>
+      <Link style={{textDecoration: 'none'}} to="/allproducts"><Button sx={{color: "white", fontSize: 20}} variant="text">EXPLORE</Button></Link>
     </Carousel.Caption>
   </Carousel.Item>
 </Carousel>

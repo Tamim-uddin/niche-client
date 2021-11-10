@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import { NavLink } from 'react-router-dom';
 
 const Header = () => {
     return (
@@ -22,9 +23,10 @@ const Header = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Oculus Sunglass
+            Oculus Sunglasses
           </Typography>
-          <Button color="inherit">Login</Button>
+          <NavLink to="/dashboard"><Button sx={{textDecoration: 'none', color: 'white'}} color="inherit">Dashboard</Button></NavLink>
+          <NavLink to="/login"><Button sx={{textDecoration: 'none', color: 'white'}} color="inherit">Login</Button></NavLink>
         </Toolbar>
       </AppBar>
     </Box>
