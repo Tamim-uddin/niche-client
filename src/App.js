@@ -6,7 +6,7 @@ import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 import Home from './Pages/Home/Home/Home';
 import Login from './Pages/Login/Login/Login';
 import Register from './Pages/Login/Register/Register';
-import PlaceOrder from './Pages/PlaceOrder/PlaceOrder';
+
 
 function App() {
   return (
@@ -30,9 +30,6 @@ function App() {
             </Route>
             <Route path="/allproducts">
               <AllProducts></AllProducts>
-            </Route>
-            <Route path="/product/:id">
-              <PlaceOrder></PlaceOrder>
             </Route>
           </Switch>
         </Router>
