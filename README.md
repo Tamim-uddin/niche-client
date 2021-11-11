@@ -1,10 +1,15 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [My website](https://oculussunglasses-228cb.web.app/).
 
-## Available Scripts
+## About My Website
 
-In the project directory, you can run:
+In the project directory, I try to explore about a optical website,there are many types of glusses in theire web. I also try to 
+•explore theire products
+•theire special products and services
+•theire brances
+•they have also utb channel for users
+•theire client are hit review and i try to show these
 
 ### `npm start`
 
