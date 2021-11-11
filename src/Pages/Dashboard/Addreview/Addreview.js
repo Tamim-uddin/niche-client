@@ -10,7 +10,7 @@ const Addreview = () => {
     const onSubmit = data => {
         console.log(data);
 
-        axios.post('http://localhost:5000/reviews', data)
+        axios.post('https://evening-harbor-90640.herokuapp.com/reviews', data)
         .then(res => {
             console.log(res);
         })

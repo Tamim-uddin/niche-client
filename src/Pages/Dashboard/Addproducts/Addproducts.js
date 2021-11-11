@@ -8,7 +8,7 @@ const Addproducts = () => {
     const onSubmit = data => {
         console.log(data);
 
-        axios.post('http://localhost:5000/products', data)
+        axios.post('https://evening-harbor-90640.herokuapp.com/products', data)
         .then(res => {
             console.log(res);
         })

@@ -12,7 +12,7 @@ const Myorder = ({booking, setbookings, bookings}) => {
     const {_id, email, clientName, price, productName} = booking;
 
     const handleDelete = id => {
-        const url = `http://localhost:5000/bookings/${id}`;
+        const url = `https://evening-harbor-90640.herokuapp.com/bookings/${id}`;
         fetch(url, {
             method: 'DELETE'
         })

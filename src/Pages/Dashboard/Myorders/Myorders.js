@@ -5,9 +5,13 @@ import Myorder from '../Myorder/Myorder';
 
 const Myorders = () => {
     const [bookings, setbookings] = useState([]);
-    const {user} = useAuth();
+    const {user, token} = useAuth();
     useEffect( () => {
-        fetch(`http://localhost:5000/bookings?email=${user.email}`)
+        fetch(`https://evening-harbor-90640.herokuapp.com/bookings?email=${user.email}`, {
+            headers: {
+                'authorization': `Beare ${token}` 
+            }
+        })
         .then(res => res.json())
         .then(data => setbookings(data))
     } , [])

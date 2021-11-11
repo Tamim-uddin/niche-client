@@ -1,18 +1,19 @@
 import { useEffect, useState } from "react"
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, updateProfile } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, updateProfile, getIdToken } from "firebase/auth";
 import initializeAuthentication from "../Pages/Login/Firebase/firebase.init";
 
 initializeAuthentication();
 
 const useFirebase = () => {
     const [user, setuser] = useState({});
-    const [isloading, setisloading] = useState(false);
+    const [isloading, setisloading] = useState(true);
     const [autherror, setautherror] = useState('');
     const [admin, setadmin] = useState(false);
+    const [token, settoken] = useState('');
 
     const auth = getAuth();
 
-
+    // create A user
     const registerUser = (email, password, name, history) => {
         setisloading(true);
         createUserWithEmailAndPassword(auth, email, password)
@@ -38,11 +39,15 @@ const useFirebase = () => {
             })
             .finally(() => setisloading(false));
     }
-
+    // user auth sate observer
     useEffect( () => {
       const unsubscribed = onAuthStateChanged(auth, (user) => {
             if (user) {             
               setuser(user);
+              getIdToken(user)
+              .then(idToken => {
+                  settoken(idToken);
+              })
               
             } 
             else {
@@ -52,13 +57,14 @@ const useFirebase = () => {
           });
           return () => unsubscribed;
     } , []);
-
+    // set admin
     useEffect(() => {
-        fetch(`http://localhost:5000/users/${user.email}`)
+        fetch(`https://evening-harbor-90640.herokuapp.com/users/${user.email}`)
         .then(res => res.json())
         .then(data => setadmin(data.admin))
     } , [user.email])
 
+    // login user
     const loginUser = (email, password, location, history) => {
         setisloading(true);
         signInWithEmailAndPassword(auth, email, password)
@@ -75,10 +81,10 @@ const useFirebase = () => {
             .finally(() => setisloading(false));
 
     }
-
+    // save user info
     const saveUser = (email, displayName) => {
         const user = {email, displayName};
-        fetch('http://localhost:5000/users', {
+        fetch('https://evening-harbor-90640.herokuapp.com/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -103,6 +109,7 @@ const useFirebase = () => {
     return {
         user,
         admin,
+        token,
         logout,
         loginUser,
         isloading,

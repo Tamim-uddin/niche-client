@@ -41,7 +41,7 @@ const BookingAllmodal = ({openBookingModal, handleClose,allproduct}) => {
             price
         }
  
-         fetch('http://localhost:5000/bookings', {
+         fetch('https://evening-harbor-90640.herokuapp.com/bookings', {
              method: 'POST',
              headers: {
                  'content-type': 'application/json'

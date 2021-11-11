@@ -5,7 +5,7 @@ import Manageallorder from '../Manageallorder/Manageallorder';
 const Manageallorders = () => {
     const [manageorders, setmanageorders] = useState([]);
     useEffect( () => {
-        fetch('http://localhost:5000/bookings/admin')
+        fetch('https://evening-harbor-90640.herokuapp.com/bookings/admin')
         .then(res => res.json())
         .then(data => setmanageorders(data))
     } , [])
